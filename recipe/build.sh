@@ -5,11 +5,23 @@ set -x
 # export CPPFLAGS="${CPPFLAGS} -isystem $PREFIX/include "
 export ac_cv_func_memcmp_working=yes
 
-# disable server components
+if [ `uname -m` == ppc64le ]; then
+    # libsasl2 from defaults needs this when building on POWER
+    export LIBS="-ldl"
+fi
+
+# --disable-slaped: don't build server components
+# --disable-slurpd: deprecated; removed in OpenLDAP 2.4
+# --enable-ipv6: welcome to the future!
+# --with-cyrus-sasl: required for full LDAPv3 compliance
+# --with-tls openssl: required for full LDAPv3 compliance
 ./configure \
     --prefix=$PREFIX  \
     --disable-slapd \
-    --disable-slurpd \
-    --with-yielding_select=yes || { cat config.log; exit 1; }
+    --enable-ipv6 \
+    --with-cyrus-sasl \
+    --with-tls=openssl \
+    --with-yielding_select=yes \
+    || { cat config.log; exit 1; }
 make -j${CPU_COUNT}
 make install
