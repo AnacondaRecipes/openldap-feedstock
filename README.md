@@ -5,12 +5,14 @@ Home: https://www.openldap.org
 
 Package license: OLDAP-2.8
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openldap-feedstock/blob/master/LICENSE.txt)
 
 Summary: OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.
 
 
+Development: https://www.openldap.org/software/repo.html
 
+Documentation: https://www.openldap.org/doc/
 
 Current build status
 ====================
@@ -69,6 +71,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2349&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openldap-feedstock?branchName=master&jobName=osx&configuration=osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2349&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openldap-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>
