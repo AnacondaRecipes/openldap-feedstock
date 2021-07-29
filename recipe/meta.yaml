@@ -26,11 +26,12 @@ requirements:
     - make
     - groff
   host:
-    - openssl
-    - cyrus-sasl
+    - openssl >=1.0.2
+    - cyrus-sasl >=2.1.21
+    - krb5
   run:
-    - openssl
-    - cyrus-sasl
+    - openssl >=1.0.2
+    - cyrus-sasl >=2.1.21
 
 test:
   commands:
