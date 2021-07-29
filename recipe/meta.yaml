@@ -17,6 +17,7 @@ build:
   ignore_run_exports:
     # package on defaults contains only static libs
     - cyrus-sasl    # [ppc64le]
+    - krb5
 
 requirements:
   build:
