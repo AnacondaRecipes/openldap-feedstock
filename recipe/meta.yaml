@@ -10,8 +10,9 @@ source:
   sha256: 74ecefda2afc0e054d2c7dc29166be6587fa9de7a4087a80183bc9c719dbf6b3
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not unix]
+  skip: True  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage('openldap', max_pin='x.x') }}
   ignore_run_exports:
