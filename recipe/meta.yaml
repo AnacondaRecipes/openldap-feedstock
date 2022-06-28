@@ -12,6 +12,7 @@ source:
 build:
   number: 1
   skip: True  # [not unix]
+  skip: True  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage('openldap', max_pin='x.x') }}
   ignore_run_exports:
