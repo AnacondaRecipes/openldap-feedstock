@@ -10,8 +10,10 @@ source:
   sha256: 57b59254be15d0bf6a9ab3d514c1c05777b02123291533134a87c94468f8f47b
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not unix]
+  # no groff on s390x
+  skip: True  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage('openldap', max_pin='x.x') }}
   ignore_run_exports:
@@ -25,9 +27,11 @@ requirements:
     - {{ compiler('cxx') }}
     - make
     - groff
+
   host:
     - openssl
     - cyrus-sasl
+
   run:
     - openssl
     - cyrus-sasl
