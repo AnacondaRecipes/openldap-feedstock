@@ -1,5 +1,5 @@
 {% set name = "openldap" %}
-{% set version = "2.5.5" %}
+{% set version = "2.6.4" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,17 +7,14 @@ package:
 
 source:
   url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/{{ name }}-{{ version }}.tgz
-  sha256: 74ecefda2afc0e054d2c7dc29166be6587fa9de7a4087a80183bc9c719dbf6b3
+  sha256: d51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991
 
 build:
-  number: 1
+  number: 0
   skip: True  # [not unix]
   skip: True  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage('openldap', max_pin='x.x') }}
-  ignore_run_exports:
-    # package on defaults contains only static libs
-    - cyrus-sasl    # [ppc64le]
 
 requirements:
   build:
@@ -27,10 +24,10 @@ requirements:
     - make
     - groff
   host:
-    - openssl
-    - cyrus-sasl
+    - openssl {{ openssl }}
+    - cyrus-sasl 2.1.28
   run:
-    - openssl
+    - openssl 3.*
     - cyrus-sasl
 
 test:
@@ -43,6 +40,8 @@ about:
   license_family: BSD
   license_file: LICENSE
   summary: >
+    OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.
+  description: >
     OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.
   doc_url: https://www.openldap.org/doc/
   dev_url: https://www.openldap.org/software/repo.html
