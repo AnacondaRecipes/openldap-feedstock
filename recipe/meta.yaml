@@ -24,7 +24,7 @@ requirements:
     - make
     - groff
   host:
-    - openssl {{ openssl }}
+    - openssl 3.0.8
     - cyrus-sasl 2.1.28
   run:
     - openssl 3.*
