@@ -4,6 +4,9 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./contrib/ldapc++
 set -x
 # export CPPFLAGS="${CPPFLAGS} -isystem $PREFIX/include "
 export ac_cv_func_memcmp_working=yes
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+fi
 
 if [ `uname -m` == ppc64le ]; then
     # libsasl2 from defaults needs this when building on POWER
@@ -24,4 +27,5 @@ fi
     --with-yielding_select=yes \
     || { cat config.log; exit 1; }
 make -j${CPU_COUNT}
+make test
 make install
